@@ -18,7 +18,7 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
     this.suitChoice = suitChoice || CardJS.CARD_SUIT;
 
     // Multidimensional array to store locations and the cards within the areas.
-    this.cardStorage = [[]];
+    this.cardStorage = [[], [], []];
 
     this.getCardCount = function(cardName){
         var count = 0;
@@ -31,11 +31,30 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
         return count;
     };
 
-    this.drawCard = function(){
+    this.deckContains = function(card){
+        for(var i=0;i<this.cardStorage[0].length;i++){
+            if(this.cardStorage[0][i] == card)
+                return true;
+        }
+        return false;
+    }
 
+    this.drawCard = function(location){
+        var card;
+        while(this.getCardCount((card = this.randomCard())) >= this.duplicates){}
+        this.cardStorage[location].push(card);
+        console.log("Drew card : " + card);
     };
 
     this.randomCard = function(){
         return this.valueChoice[Math.floor(Math.random()*this.valueChoice.length)] + "" + this.suitChoice[Math.floor(Math.random()*this.suitChoice.length)];
     };
 };
+
+// TEST
+{
+    var deck = new CardJS.Deck(52, 1);
+    for(var i=0;i<52;i++){
+        deck.drawCard(1);
+    }
+}
