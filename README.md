@@ -1,6 +1,9 @@
 # CardJS
 CardJS is a library that will be able to be used to create card games easily, and manage the information in a neat manner.
 
+## Currently Implemented
+Deck with drawing a unique card, according to duplicates
+
 ## Authors
 - **Michael George** - *Initial Work* - [MSG138](https://github.com/msg138)
 
