@@ -51,6 +51,9 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
     };
 };
 
+CardJS.Action = function(onActionUse){
+}
+
 // TEST
 {
     var deck = new CardJS.Deck(52, 1);
