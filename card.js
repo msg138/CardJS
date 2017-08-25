@@ -18,7 +18,7 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
     this.suitChoice = suitChoice || CardJS.CARD_SUIT;
 
     // Multidimensional array to store locations and the cards within the areas.
-    this.cardStorage = [[], [], []];
+    this.cardStorage = [[]];
 
     this.getCardCount = function(cardName){
         var count = 0;
@@ -52,6 +52,23 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
 };
 
 CardJS.Action = function(onActionUse){
+    this.onActionUse = onActionUse || function(){};
+};
+
+CardJS.PlayerInfo = function(location, startScore){
+    this.location = location;
+    this.score = startScore || 0;
+};
+
+CardJS.Game = function(){
+    this.actions = [];
+    this.deck = new CardJS.Deck(52, 1);
+
+    this.playerInfo = [];
+
+    this.addPlayer = function(){
+        this.playerInfo.push(new CardJS.PlayerInfo(this.deck.cardStorage.length));
+    }
 }
 
 // TEST
