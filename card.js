@@ -51,8 +51,9 @@ CardJS.Deck = function(amount, duplicates, valueChoice, suitChoice){
     };
 };
 
-CardJS.Action = function(onActionUse){
+CardJS.Action = function(onActionUse, requirements){
     this.onActionUse = onActionUse || function(){};
+    this.requirements = requirements || function(pl){ return true; };
 };
 
 CardJS.PlayerInfo = function(location, startScore){
